@@ -42,7 +42,12 @@ class _MainAppState extends State<MainApp> {
   }
 
   Future<void> logoutUser() async {
-    await authInstance.signOut();
+    try {
+      await authInstance.signOut();
+      print("Erfolgreich ausgeloggt");
+    } catch (e) {
+      print("Fehler beim Loggout: $e");
+    }
   }
 
   @override
