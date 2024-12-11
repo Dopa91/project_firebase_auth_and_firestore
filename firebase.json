@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"ios":{"default":{"projectId":"tasksheet-firebase-auth-ad","appId":"1:304233516677:ios:5794f0ca51e1dbef22a3ec","uploadDebugSymbols":false,"fileOutput":"ios/Runner/GoogleService-Info.plist"}},"dart":{"lib/firebase_options.dart":{"projectId":"tasksheet-firebase-auth-ad","configurations":{"ios":"1:304233516677:ios:5794f0ca51e1dbef22a3ec"}}}}}}
