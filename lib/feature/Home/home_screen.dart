@@ -45,14 +45,21 @@ class HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "Willkommen, ${user?.email}",
-              style: const TextStyle(fontSize: 20),
-              textAlign: TextAlign.center,
-            ),
-            FloatingActionButton(
-              onPressed: logoutUser,
-              child: const Text("Logout"),
+            Row(
+              children: [
+                Text(
+                  "Willkommen, \n${user?.email}",
+                  style: const TextStyle(fontSize: 20),
+                  textAlign: TextAlign.center,
+                ),
+                const Expanded(
+                  child: SizedBox(),
+                ),
+                IconButton(
+                  onPressed: logoutUser,
+                  icon: const Icon(Icons.logout),
+                ),
+              ],
             ),
             const SizedBox(height: 24),
             Expanded(
@@ -83,7 +90,7 @@ class HomeScreenState extends State<HomeScreen> {
                             game['Game_name'] != null &&
                                     game['Game_name'].isNotEmpty
                                 ? "${game['Game_name']}"
-                                : "Bober nix finden",
+                                : "'Bober nix finden'",
                           ),
                           subtitle: Text(
                             game['Genre'] != null && game['Genre'].isNotEmpty
