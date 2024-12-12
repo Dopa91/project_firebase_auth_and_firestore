@@ -46,23 +46,41 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Login")),
+      appBar: AppBar(title: const Text("GameRate")),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(32.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            const Placeholder(
+              fallbackWidth: 128,
+              fallbackHeight: 256,
+            ),
+            const SizedBox(
+              height: 64,
+            ),
+            const Text("ERROR"),
             TextField(
               controller: mailController,
-              decoration: const InputDecoration(labelText: "E-Mail"),
+              decoration: const InputDecoration(
+                labelText: "E-Mail",
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(),
+                ),
+              ),
             ),
             const SizedBox(height: 16),
             TextField(
               controller: passwordController,
-              decoration: const InputDecoration(labelText: "Password"),
+              decoration: const InputDecoration(
+                labelText: "Password",
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(),
+                ),
+              ),
               obscureText: true,
             ),
-            const SizedBox(height: 24),
+            const SizedBox(height: 32),
             ElevatedButton(
               onPressed: () {
                 String email = mailController.text;
