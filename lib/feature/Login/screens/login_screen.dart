@@ -14,6 +14,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   late TextEditingController mailController;
   late TextEditingController passwordController;
+  String errorMessage = "";
 
   @override
   void initState() {
@@ -37,8 +38,14 @@ class _LoginScreenState extends State<LoginScreen> {
       );
       log("Login erfolgreich: ${userCredential.user?.email}");
     } on FirebaseAuthException catch (e) {
+      setState(() {
+        errorMessage = e.message ?? "Ein Fehler ist aufgetreten.";
+      });
       log("Firebase Auth Exception: ${e.message}");
     } catch (e) {
+      setState(() {
+        errorMessage = "Bober nicht mag was machst, mach neu ../";
+      });
       log("Allgemeiner Fehler: $e");
     }
   }
@@ -59,7 +66,10 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(
               height: 64,
             ),
-            const Text("ERROR"),
+            Text(
+              errorMessage,
+              style: const TextStyle(color: Colors.red),
+            ),
             TextField(
               controller: mailController,
               decoration: const InputDecoration(
