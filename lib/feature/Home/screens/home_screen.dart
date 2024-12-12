@@ -11,13 +11,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeScreenState extends State<HomeScreen> {
-  late Future<List<Map<String, dynamic>>> gamesFuture;
+  Future<List<Map<String, dynamic>>>? gamesFuture;
 
-  @override
-  void initState() {
-    super.initState();
-    gamesFuture = fetchGames();
-  }
+  // @override
+  // void initState() {
+  //   gamesFuture = fetchGames();
+  //   super.initState();
+  // }
 
   Future<void> logoutUser() async {
     await authInstance.signOut();
@@ -48,6 +48,7 @@ class HomeScreenState extends State<HomeScreen> {
                   textAlign: TextAlign.center,
                 ),
                 const Expanded(
+                  flex: 4,
                   child: SizedBox(),
                 ),
                 Container(
@@ -58,8 +59,52 @@ class HomeScreenState extends State<HomeScreen> {
                     color: Color.fromARGB(255, 203, 149, 212),
                   ),
                   child: IconButton(
-                    onPressed: logoutUser,
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text("Abmelden?"),
+                            content: const Text("Wirkloich Abmelden?"),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text("Abbrechen"),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  logoutUser();
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text("Ja"),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
                     icon: const Icon(Icons.logout),
+                  ),
+                ),
+                const Expanded(child: SizedBox()),
+                Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(24),
+                    ),
+                    color: Color.fromARGB(255, 203, 149, 212),
+                  ),
+                  child: IconButton(
+                    icon: const Icon(Icons.download),
+                    onPressed: () {
+                      setState(
+                        () {
+                          gamesFuture = fetchGames();
+                        },
+                      );
+                    },
                   ),
                 ),
               ],
