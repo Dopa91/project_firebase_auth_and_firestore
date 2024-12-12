@@ -25,13 +25,8 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   Future<List<Map<String, dynamic>>> fetchGames() async {
-    try {
-      final dataSnapshot = await firestoreInstance.collection('Games').get();
-      return dataSnapshot.docs.map((doc) => doc.data()).toList();
-    } catch (e) {
-      log("Fehler beim Abrufen der Daten: $e");
-      return [];
-    }
+    final dataSnapshot = await firestoreInstance.collection('Games').get();
+    return dataSnapshot.docs.map((doc) => doc.data()).toList();
   }
 
   @override
@@ -55,9 +50,17 @@ class HomeScreenState extends State<HomeScreen> {
                 const Expanded(
                   child: SizedBox(),
                 ),
-                IconButton(
-                  onPressed: logoutUser,
-                  icon: const Icon(Icons.logout),
+                Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(24),
+                    ),
+                    color: Color.fromARGB(255, 203, 149, 212),
+                  ),
+                  child: IconButton(
+                    onPressed: logoutUser,
+                    icon: const Icon(Icons.logout),
+                  ),
                 ),
               ],
             ),
