@@ -25,7 +25,7 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   Future<List<Map<String, dynamic>>> fetchGames() async {
-    Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     final dataSnapshot = await firestoreInstance.collection('Games').get();
     return dataSnapshot.docs.map((doc) => doc.data()).toList();
   }
