@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:tasksheet_firebase_authentication/feature/Home/home_screen.dart';
-import 'package:tasksheet_firebase_authentication/feature/Login/login_screen.dart';
+import 'package:tasksheet_firebase_authentication/feature/Home/screens/home_screen.dart';
+import 'package:tasksheet_firebase_authentication/feature/Login/screens/login_screen.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
