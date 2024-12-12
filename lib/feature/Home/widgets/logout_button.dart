@@ -32,9 +32,9 @@ class LogoutButton extends StatelessWidget {
                     },
                     child: const Text("Abbrechen"),
                   ),
-                  const TextButton(
-                    onPressed: null,
-                    child: Text("Ja"),
+                  TextButton(
+                    onPressed: button,
+                    child: const Text("Ja"),
                   ),
                 ],
               );
