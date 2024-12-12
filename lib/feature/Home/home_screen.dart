@@ -76,16 +76,14 @@ class HomeScreenState extends State<HomeScreen> {
                     return Center(child: Text("Fehler: ${snapshot.error}"));
                   }
 
-                  final games = snapshot.data;
-
-                  if (games == null || games.isEmpty) {
+                  if (snapshot.data!.isEmpty) {
                     return const Center(child: Text("Keine Spiele gefunden."));
                   }
 
                   return ListView.builder(
-                    itemCount: games.length,
+                    itemCount: snapshot.data?.length,
                     itemBuilder: (context, index) {
-                      final game = games[index];
+                      final game = snapshot.data![index];
 
                       return Card(
                         child: ListTile(
