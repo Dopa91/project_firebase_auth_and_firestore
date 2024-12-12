@@ -60,4 +60,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'tasksheet-firebase-auth-ad.firebasestorage.app',
     iosBundleId: 'com.example.tasksheetFirebaseAuthentication',
   );
+
 }
