@@ -62,7 +62,13 @@ class HomeScreenState extends State<HomeScreen> {
                   },
                 ),
                 const Expanded(child: SizedBox()),
-                const DownloadGameListButton(),
+                DownloadGameListButton(
+                  button: () {
+                    setState(() {
+                      gamesFuture = fetchGames();
+                    });
+                  },
+                ),
               ],
             ),
             const SizedBox(height: 24),
